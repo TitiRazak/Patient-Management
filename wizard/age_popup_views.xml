@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="age_popup_view_form" model="ir.ui.view">
+            <field name="name">age_popup_view_form</field>
+            <field name="model">age.popup</field>
+            <field name="arch" type="xml">
+                <form string="_form">
+                    <sheet>
+                        <group>
+                            <field name="birth_date"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button type="object" class="oe_highlight" name="calcul_age" string="Validated"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

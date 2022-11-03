@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <!--        PATIENT TREE FORM-->
+        <record model="ir.ui.view" id="patient_list_tree_view">
+            <field name="name">patient.list.tree.view</field>
+            <field name="model">patient.list</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="age"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        PATIENT FORM VIEW-->
+        <record model="ir.ui.view" id="patient_list_form_view">
+            <field name="name">patient.list.form.view</field>
+            <field name="model">patient.list</field>
+            <field name="arch" type="xml">
+                <form string="student_form">
+                    <header>
+                        <button name="set_consulted" string="Consulter" class="oe_highlight" states="new"
+                                type="object"/>
+                        <button name="set_done" string="Traiter" class="oe_highlight" states="consulted"
+                                type="object"/>
+                        <button name="set_canceled" string="Annuler" class="oe_highlight" states="consulted"
+                                type="object"/>
+                        <button name="set_new" string="Mettre á nouveau" class="oe_highlight" states="canceled"
+                                type="object"/>
+                        <button name="calcul_age" string="Calcul d'age" class="oe_highlight"
+                                type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="new,consulted,done" clickable="True"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="firstname" required="1"/>
+                                <field name="lastname" required="1"/>
+                                <field name="age" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <!--                    Add chatter below Student view form-->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="patient_list_action">
+            <field name="name">Patient List</field>
+            <field name="res_model">patient.list</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="hospital_root" name="Hospital Management"/>
+        <menuitem id="hospital_menu" name="Hospital" parent="hospital_root"/>
+        <menuitem id="hospital_child" name="Patient" parent="hospital_menu" action="patient_list_action"/>
+
+    </data>
+</odoo>

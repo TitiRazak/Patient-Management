@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_patient_list,patient.list,model_patient_list,base.group_user,1,1,1,1
+access_age_popup,age.popup,model_age_popup,base.group_user,1,1,1,1
